@@ -14,6 +14,8 @@ class TableauController: UIViewController, UITableViewDelegate, UITableViewDataS
    
     var chansons = [Chanson]()
     
+    let identifiantCell = "ChansonCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -27,7 +29,18 @@ class TableauController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let chanson = chansons[indexPath.row]
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: identifiantCell) as? ChansonCell {
+            cell.creerCell(chanson)
+            return cell
+        }
+        
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 170
     }
 
     
@@ -45,7 +58,7 @@ class TableauController: UIViewController, UITableViewDelegate, UITableViewDataS
         chansons.append(san)
         let seul = Chanson(artiste: "Orelsan", titre: "Si seul", code: "cz-PLtXh7Lo")
         chansons.append(seul)
-        let inacheves = Chanson(artiste: "Casseur Flowters", titre: "Inachevéq", code: "MW1eQZ_PEb4")
+        let inacheves = Chanson(artiste: "Casseur Flowters", titre: "Inachevés", code: "MW1eQZ_PEb4")
         chansons.append(inacheves)
         tableView.reloadData()
         
