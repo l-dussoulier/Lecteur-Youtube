@@ -50,7 +50,7 @@ class TableauController: UIViewController, UITableViewDelegate, UITableViewDataS
         chansons.append(cool)
         let bien = Chanson(artiste: "Orelsan", titre: "Tout va bien", code: "dq6G2YWoRqA")
         chansons.append(bien)
-        let basique = Chanson(artiste: "Orelsan", titre: "Basique", code: "2bjk26RwJyU")
+        let basique = Chanson(artiste: "Orelsan", titre: "Basique", code: "2bjk26RwjyU")
         chansons.append(basique)
         let ronde = Chanson(artiste: "Orelsan", titre: "La terre est ronde", code: "oGdhZyS2ozo")
         chansons.append(ronde)
