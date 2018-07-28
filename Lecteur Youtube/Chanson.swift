@@ -30,7 +30,7 @@ class Chanson {
     }
     
     var miniatureUrl: String {
-        return _baseUrlVideo + _code + _finUrlMiniature
+        return _baseUrlMiniature + _code + _finUrlMiniature
     }
     
     init(artiste: String, titre: String, code: String) {

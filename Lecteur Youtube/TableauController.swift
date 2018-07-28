@@ -15,6 +15,7 @@ class TableauController: UIViewController, UITableViewDelegate, UITableViewDataS
     var chansons = [Chanson]()
     
     let identifiantCell = "ChansonCell"
+    let identifiantSegue = "VersVideo"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,19 @@ class TableauController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 170
+        return 130
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chanson = chansons[indexPath.row]
+        performSegue(withIdentifier: identifiantSegue, sender: chanson)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == identifiantSegue {
+            if let nouveauController = segue.destination as? VideoController {
+                nouveauController.chanson = sender as? Chanson
+            }
+        }
     }
 
     
@@ -54,7 +67,7 @@ class TableauController: UIViewController, UITableViewDelegate, UITableViewDataS
         chansons.append(basique)
         let ronde = Chanson(artiste: "Orelsan", titre: "La terre est ronde", code: "oGdhZyS2ozo")
         chansons.append(ronde)
-        let san = Chanson(artiste: "Orelsan", titre: "San", code: "PejyoeG_Tma")
+        let san = Chanson(artiste: "Orelsan", titre: "San", code: "PejyoeG_TmA")
         chansons.append(san)
         let seul = Chanson(artiste: "Orelsan", titre: "Si seul", code: "cz-PLtXh7Lo")
         chansons.append(seul)
